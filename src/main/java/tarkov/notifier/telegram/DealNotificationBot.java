@@ -10,6 +10,7 @@ import tarkov.notifier.market.TMarketException;
 import tarkov.notifier.telegram.storage.TelegramUser;
 import tarkov.notifier.telegram.storage.UsersRepository;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
@@ -32,6 +33,7 @@ public abstract class DealNotificationBot extends TelegramLongPollingBot {
 
     protected void broadcastToActives(String category, List<Profit> profits) {
         List<Profit> filteredProfits = profits.stream().filter(ifUseful()).limit(MAX_PROFITS_IN_A_MESSAGE)
+                .sorted(sortProfitsComparator())
                 .collect(Collectors.toList());
         TelegramMessage message = generateMessage(category, filteredProfits);
         for (TelegramUser receiver : usersRepository.getReceivers()) {
@@ -39,9 +41,13 @@ public abstract class DealNotificationBot extends TelegramLongPollingBot {
         }
     }
 
+    protected Comparator<? super Profit> sortProfitsComparator() {
+        return (o1, o2) -> o2.getProfit() - o1.getProfit();
+    }
+
     protected abstract TelegramMessage generateMessage(String category, List<Profit> filteredProfits);
 
-    private Predicate<Profit> ifUseful() {
+    protected Predicate<Profit> ifUseful() {
         return profit -> (profit.getProfit() > MIN_PROFIT_ROUBLES) ||
                 (profit.getProfitPercents() > MIN_PROFIT_PERCENTS);
     }
