@@ -58,7 +58,6 @@ public abstract class DealNotificationBot extends TelegramLongPollingBot {
             execute(sendMessage);
         } catch (TelegramApiException e) {
             log.error("Can't send message", e);
-            throw new TMarketException(e);
         }
     }
 }
