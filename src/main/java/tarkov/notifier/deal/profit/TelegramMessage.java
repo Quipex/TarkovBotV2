@@ -32,21 +32,21 @@ public abstract class TelegramMessage {
         int resultItemAmount = profit.getDeal().getItemAmount();
         String message = formatHashCode(profit.getDeal().getItemName()) + " x" + resultItemAmount +
                 " [#" + profit.getDeal().category() + "] " + "\n" +
-                "Реальная прибыль " + formatPrice(profit.getProfit());
-        if (resultItemAmount > 1) {
-            message += "(" + profit.getFleaPrice() / resultItemAmount + ")";
-        }
-        message += " (" + profit.getProfitPercents() + "%)";
+                "Реальная прибыль " + formatPrice(profit.getProfit()) + " (" + profit.getProfitPercents() + "%)";
         if (profit.getTaxes() > 0) {
             message += ", комиссия " + formatPrice(profit.getTaxes());
         }
-        message += ".\nНа барахолке " + formatPrice(profit.getFleaPrice()) + ", на самом деле " + formatPrice(profit.getRealPrice()) + ".\n";
+        message += ".\nНа барахолке " + formatPrice(profit.getFleaPrice());
+        if (resultItemAmount > 1) {
+            message += "(" + profit.getFleaPrice() / resultItemAmount + ")";
+        }
+        message += ", на самом деле " + formatPrice(profit.getRealPrice()) + ".\n";
         message += additionalInfo(profit).isBlank() ? "" : additionalInfo(profit) + "\n";
         message += "Ресурсы:\n";
         StringBuilder resourceListText = new StringBuilder();
         profit.getResourcesToPrice().forEach(((resourceAmount, price) ->
                 resourceListText.append(resourceAmount.getName()).append(" { цена: ").append(formatPrice(price))
-                .append(", кол-во: ").append(resourceAmount.getAmount()).append(" }\n")));
+                        .append(", кол-во: ").append(resourceAmount.getAmount()).append(" }\n")));
         message += resourceListText.toString();
         return message;
     }
