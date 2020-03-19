@@ -56,7 +56,8 @@ public abstract class TelegramMessage {
     private String formatHashCode(String resultItemName) {
         return "#" + resultItemName.replace(' ', '_')
                 .replace('.', '_')
-                .replace('-', '_');
+                .replace('-', '_')
+                .replace('\'', '_');
     }
 
 
