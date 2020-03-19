@@ -30,8 +30,8 @@ public abstract class TelegramMessage {
 
     private String generatePart(Profit profit) {
         int resultItemAmount = profit.getDeal().getItemAmount();
-        String message = formatHashCode(profit.getDeal().getItemName()) + " [#" + profit.getDeal().category() + "] " +
-                "x" + resultItemAmount + "\n" +
+        String message = formatHashCode(profit.getDeal().getItemName()) + " x" + resultItemAmount +
+                " [#" + profit.getDeal().category() + "] " + "\n" +
                 "Реальная прибыль " + formatPrice(profit.getProfit());
         if (resultItemAmount > 1) {
             message += "(" + profit.getFleaPrice() / resultItemAmount + ")";
@@ -44,10 +44,9 @@ public abstract class TelegramMessage {
         message += additionalInfo(profit).isBlank() ? "" : additionalInfo(profit) + "\n";
         message += "Ресурсы:\n";
         StringBuilder resourceListText = new StringBuilder();
-        profit.getResourcesToPrice().forEach(((resourceAmount, price) -> {
-            resourceListText.append(resourceAmount.getName()).append(" { цена: ").append(formatPrice(price))
-                    .append(", кол-во: ").append(resourceAmount.getAmount()).append(" }\n");
-        }));
+        profit.getResourcesToPrice().forEach(((resourceAmount, price) ->
+                resourceListText.append(resourceAmount.getName()).append(" { цена: ").append(formatPrice(price))
+                .append(", кол-во: ").append(resourceAmount.getAmount()).append(" }\n")));
         message += resourceListText.toString();
         return message;
     }
