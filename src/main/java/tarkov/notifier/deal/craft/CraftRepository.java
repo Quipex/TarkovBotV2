@@ -69,12 +69,6 @@ public class CraftRepository extends DealRepository {
                             new ResourceAmount("Сломанный GPX", 1),
                             new ResourceAmount("SSD диск", 1),
                     })),
-            new Craft("Флешка", 3, 0, 1900, Craft.CraftPlace.TOILET,
-                    resources(new ResourceAmount[]{
-                            new ResourceAmount("Сломанный G-phone", 1),
-                            new ResourceAmount("Сломанный GPX", 1),
-                            new ResourceAmount("SSD диск", 1),
-                    })),
             new Craft("Воздушный фильтр для противогаза", 1, 0, 2, Craft.CraftPlace.TOILET,
                     resources(new ResourceAmount[]{
                             new ResourceAmount("Противогаз ГП-5", 1),
