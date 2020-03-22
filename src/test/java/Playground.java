@@ -1,4 +1,5 @@
 import org.junit.Test;
+import tarkov.notifier.Telegram;
 
 public class Playground {
     @Test
@@ -10,5 +11,14 @@ public class Playground {
         int offerVal = baseval * quantity;
         return (int) Math.round(offerVal * 0.025 * Math.pow(4, Math.log10(offerVal / (float) price)) +
                 price * 0.025 * Math.pow(4, Math.log10(price / (float) offerVal)));
+    }
+
+    @Test
+    public void testTelegram() {
+        try {
+            float err = 10 / 0;
+        } catch (Exception e) {
+            Telegram.sendError(e);
+        }
     }
 }
