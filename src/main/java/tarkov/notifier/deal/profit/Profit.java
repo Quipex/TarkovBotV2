@@ -2,6 +2,7 @@ package tarkov.notifier.deal.profit;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import tarkov.notifier.deal.Deal;
 import tarkov.notifier.deal.ResourceAmount;
 
@@ -9,6 +10,7 @@ import java.util.Map;
 
 @Getter
 @Setter
+@ToString
 public class Profit {
     private int fleaPrice;
     private int realPrice;

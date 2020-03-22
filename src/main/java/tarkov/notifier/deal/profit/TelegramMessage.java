@@ -32,13 +32,14 @@ public abstract class TelegramMessage {
         int resultItemAmount = profit.getDeal().getItemAmount();
         String message = formatHashCode(profit.getDeal().getItemName()) + " x" + resultItemAmount +
                 " [#" + profit.getDeal().category() + "] " + "\n" +
-                "Реальная прибыль " + formatPrice(profit.getProfit()) + " (" + profit.getProfitPercents() + "%)";
+                "Реальная прибыль " + bold(formatPrice(profit.getProfit())) +
+                " (" + bold(String.valueOf(profit.getProfitPercents())) + "%)";
         if (profit.getTaxes() > 0) {
             message += ", комиссия " + formatPrice(profit.getTaxes());
         }
         message += ".\nНа барахолке " + formatPrice(profit.getFleaPrice());
         if (resultItemAmount > 1) {
-            message += "(" + profit.getFleaPrice() / resultItemAmount + ")";
+            message += "(" + formatPrice(profit.getFleaPrice() / resultItemAmount) + ")";
         }
         message += ", на самом деле " + formatPrice(profit.getRealPrice()) + ".\n";
         message += additionalInfo(profit).isBlank() ? "" : additionalInfo(profit) + "\n";
@@ -63,5 +64,13 @@ public abstract class TelegramMessage {
 
     protected String formatPrice(int price) {
         return priceFormat.format(price);
+    }
+
+    protected String bold(String msg) {
+        return "**" + msg + "**";
+    }
+
+    protected String italic(String msg) {
+        return "__" + msg + "__";
     }
 }

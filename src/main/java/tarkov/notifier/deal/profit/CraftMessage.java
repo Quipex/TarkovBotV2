@@ -16,8 +16,12 @@ public class CraftMessage extends TelegramMessage {
 
     @Override
     protected String additionalInfo(Profit profit) {
-        return formatPrice(Math.round(profit.getProfit() / (float) (((Craft) profit.getDeal()).getCraftTimeMinutes())))
+        return bold(formatPrice(roublesPerMinute(profit)))
                 + " рублей в минуту. " + getTime(profit);
+    }
+
+    private int roublesPerMinute(Profit profit) {
+        return Math.round(profit.getProfit() / (float) (((Craft) profit.getDeal()).getCraftTimeMinutes()));
     }
 
     private String getTime(Profit profit) {

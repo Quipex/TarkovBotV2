@@ -6,7 +6,6 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import tarkov.notifier.deal.profit.Profit;
 import tarkov.notifier.deal.profit.TelegramMessage;
-import tarkov.notifier.market.TMarketException;
 import tarkov.notifier.telegram.storage.TelegramUser;
 import tarkov.notifier.telegram.storage.UsersRepository;
 
@@ -48,8 +47,14 @@ public abstract class DealNotificationBot extends TelegramLongPollingBot {
     protected abstract TelegramMessage generateMessage(String category, List<Profit> filteredProfits);
 
     protected Predicate<Profit> ifUseful() {
-        return profit -> (profit.getProfit() > MIN_PROFIT_ROUBLES) ||
-                (profit.getProfitPercents() > MIN_PROFIT_PERCENTS);
+        return profit -> {
+            boolean isUseful = (profit.getProfit() > MIN_PROFIT_ROUBLES) ||
+                    (profit.getProfitPercents() > MIN_PROFIT_PERCENTS);
+            if (!isUseful) {
+                log.debug("This profit isn't useful: \n" + profit);
+            }
+            return isUseful;
+        };
     }
 
     protected void sendTextMessage(TelegramMessage message, TelegramUser receiver) {
@@ -59,7 +64,7 @@ public abstract class DealNotificationBot extends TelegramLongPollingBot {
             execute(sendMessage);
             log.debug("Sent!");
         } catch (TelegramApiException e) {
-            log.error("Can't send message", e);
+            log.error("Can't send message to " + receiver.getChatId());
         }
     }
 }
