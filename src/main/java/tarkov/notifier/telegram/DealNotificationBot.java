@@ -58,7 +58,8 @@ public abstract class DealNotificationBot extends TelegramLongPollingBot {
     }
 
     protected void sendTextMessage(TelegramMessage message, TelegramUser receiver) {
-        SendMessage sendMessage = new SendMessage(receiver.getChatId(), message.generateMessage());
+        SendMessage sendMessage = new SendMessage(receiver.getChatId(), message.generateMessage())
+                .enableHtml(true);
         try {
             log.debug("Sending message...");
             execute(sendMessage);

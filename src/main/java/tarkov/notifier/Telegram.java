@@ -24,19 +24,23 @@ public class Telegram {
         log.error("Sending an error to telegram", exception);
         String exceptionAsString = exceptionToString(exception);
         try {
-            String message = URLEncoder.encode("Tarkov-Market API bot:\n" + exceptionAsString, StandardCharsets.UTF_8);
-            String link = "https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage?chat_id=" + FALLBACK_ID + "&text=" + message;
-            HttpRequest request = HttpRequest.newBuilder(URI.create(link)).build();
-            HttpResponse<String> response = sendRequest(request);
-            int statusCode = response.statusCode();
-            String logMsg = "Sent error, got " + statusCode;
-            if (statusCode == 200) {
-                log.info(logMsg);
-            } else {
-                log.error(logMsg);
-            }
+            sendMessage(exceptionAsString);
         } catch (IOException | InterruptedException e) {
             log.error("Got exception while sending error to Telegram bot" + e);
+        }
+    }
+
+    public static void sendMessage(String sentMessage) throws IOException, InterruptedException {
+        String message = URLEncoder.encode("Tarkov-Market API bot:\n" + sentMessage, StandardCharsets.UTF_8);
+        String link = "https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage?chat_id=" + FALLBACK_ID + "&text=" + message;
+        HttpRequest request = HttpRequest.newBuilder(URI.create(link)).build();
+        HttpResponse<String> response = sendRequest(request);
+        int statusCode = response.statusCode();
+        String logMsg = "Sent error, got " + statusCode;
+        if (statusCode == 200) {
+            log.info(logMsg);
+        } else {
+            log.error(logMsg);
         }
     }
 

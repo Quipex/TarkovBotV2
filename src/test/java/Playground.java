@@ -1,6 +1,8 @@
 import org.junit.Test;
 import tarkov.notifier.Telegram;
 
+import java.io.IOException;
+
 public class Playground {
     @Test
     public void testRun() {
@@ -14,11 +16,7 @@ public class Playground {
     }
 
     @Test
-    public void testTelegram() {
-        try {
-            float err = 10 / 0;
-        } catch (Exception e) {
-            Telegram.sendError(e);
-        }
+    public void testTelegram() throws IOException, InterruptedException {
+        Telegram.sendMessage("<i>asdsad</i> <b>asd</b>");
     }
 }

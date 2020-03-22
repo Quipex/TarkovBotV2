@@ -67,10 +67,10 @@ public abstract class TelegramMessage {
     }
 
     protected String bold(String msg) {
-        return "**" + msg + "**";
+        return "<b>" + msg + "</b>";
     }
 
     protected String italic(String msg) {
-        return "__" + msg + "__";
+        return "<i>" + msg + "</i>";
     }
 }
