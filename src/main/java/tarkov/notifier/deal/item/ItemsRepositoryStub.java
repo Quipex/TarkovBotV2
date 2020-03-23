@@ -153,7 +153,7 @@ public class ItemsRepositoryStub implements ItemsRepository {
             {"Сухпаек искра", "c22766d5-d8ae-4b54-aafd-48f651a05284"},
             {"Гофрированный шланг", "7dcee9c6-2886-42a8-8c13-8ba3affb5141"},
             {"Силиконовая трубка", "cf20fa8b-8754-4aed-be69-5aa81e0fd2a0"},
-            {"Аптечка Grizzly", "d42dd6ef-cbf9-4f9f-9b0a-c6e8bd24ca68"},
+            {"Аптечка Grizzly", "20e89468-f9c4-4e42-858e-c569557435cf"},
             {"Батончик Slikers", "e537d6b4-2964-4a3d-bef2-9e3298ad3272"},
             {"Ибупрофен", "fd17e27b-0a49-431a-a6cb-95944e20c4cf"},
             {"LED-x", "a7f7568c-61fb-437e-9f71-06e58aae26ba"},
