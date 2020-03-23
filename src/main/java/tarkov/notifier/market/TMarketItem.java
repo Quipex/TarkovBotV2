@@ -78,6 +78,7 @@ public class TMarketItem {
      * Example: "https://gamepedia.cursecdn.com/escapefromtarkov_gamepedia/thumb/a/a8/Secure_Flash_drive.png/320px-Secure_Flash_drive.png?version=cbfa8ecbd440c7aeb4ee5ba63a5caa40"
      */
     private String imgBig;
+    private String bsgId;
     /**
      * Example: "https://www.patreon.com/tarkov_market"
      */
