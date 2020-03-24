@@ -33,8 +33,8 @@ public class CraftRepository extends DealRepository {
                     })),
             new Craft("7.62х51 М61", 130, 0, 166, Craft.CraftPlace.BENCH,
                     resources(new ResourceAmount[]{
-                            new ResourceAmount("Оружейный порох \"Ястреб\"(красный)", 3),
-                            new ResourceAmount("Спираль накаливания", 1),
+                            new ResourceAmount("Оружейный порох \"Ястреб\"(красный)", 1),
+                            new ResourceAmount("Спираль накаливания", 3),
                     })),
             new Craft("Пучок проводов", 8, 0, 118, Craft.CraftPlace.BENCH,
                     resources(new ResourceAmount[]{
