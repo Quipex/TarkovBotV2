@@ -115,6 +115,7 @@ public class TMarketBridge {
     }
 
     private void resetLimit(LocalDateTime now) {
+        log.debug(requestsCount + " requests per minute.");
         requestsCount = 1;
         latestRegisteredMinute = now;
     }
