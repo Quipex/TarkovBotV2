@@ -148,6 +148,13 @@ public class CraftRepository extends DealRepository {
                             new ResourceAmount("Банка говядины", 1),
                             new ResourceAmount("Кабачковая икра", 1),
                     })),
+            new Craft("Боевой стимулятор SJ1", 5, 0, 49, Craft.CraftPlace.MEDICAL,
+                    resources(new ResourceAmount[]{
+                            new ResourceAmount("Медицина", 7),
+                            new ResourceAmount("Бутылка физраствора", 2),
+                            new ResourceAmount("Пропитал", 3),
+                            new ResourceAmount("Морфий", 1),
+                    })),
 
     };
 

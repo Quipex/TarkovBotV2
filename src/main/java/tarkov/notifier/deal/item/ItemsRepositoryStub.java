@@ -1,5 +1,6 @@
 package tarkov.notifier.deal.item;
 
+import com.google.common.base.Preconditions;
 import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
 
@@ -159,6 +160,10 @@ public class ItemsRepositoryStub implements ItemsRepository {
             {"LED-x", "a7f7568c-61fb-437e-9f71-06e58aae26ba"},
             {"Дефибриллятор", "24110968-b66b-46d9-861a-ba9c976332b1"},
             {"Ключ от двери магазина KIBA", "36f30c05-7865-409c-bad2-cc309fca4bd3"},
+            {"Боевой стимулятор SJ1", "f292e3a9-7800-4fc2-bda0-6d43aa112271"},
+            {"Бутылка физраствора", "71a6b6db-d0d2-44e0-a5f7-683ad4bb1ff8"},
+            {"Пропитал", "48839bcc-faf3-4bbe-b0b4-625be67351fa"},
+            {"Морфий", "00e82880-064b-484c-9ebe-09befbfa4988"},
 
     };
     private static BidiMap<String, String> itemNameToUid = new DualHashBidiMap<>();
@@ -182,6 +187,10 @@ public class ItemsRepositoryStub implements ItemsRepository {
         for (String[] nameUidArray : itemNamesToUidsArray) {
             itemNameToUid.put(nameUidArray[0], nameUidArray[1]);
         }
+        itemNameToUid.forEach((s, s2) -> {
+            Preconditions.checkNotNull(s);
+            Preconditions.checkNotNull(s2);
+        });
     }
 
     @Override
