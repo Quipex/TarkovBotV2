@@ -12,6 +12,7 @@ import java.util.Map;
 @Setter
 @ToString
 public class Profit {
+    private int forcedFleaPrice;
     private int fleaPrice;
     private int realPrice;
     private int profit;
