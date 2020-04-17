@@ -164,7 +164,6 @@ public class BarterRepository extends DealRepository {
                             new ResourceAmount("Антикварная ваза", 1),
                             new ResourceAmount("Цепочка", 6),
                     })),
-
             new Barter("M-2 Tactical Sword", 1, 1570000, "Лыжник, квест Кремень", 1,
                     resources(new ResourceAmount[]{
                             new ResourceAmount("Считыватель UHF RFID", 2),
@@ -200,6 +199,10 @@ public class BarterRepository extends DealRepository {
             new Barter("ВОГ-17 граната 'Хаттабка'", 1, 5935, "Механик L1", 5,
                     resources(new ResourceAmount[]{
                             new ResourceAmount("Запал", 1),
+                    })),
+            new Barter("REAP-IR тепловизор", 1, 215794, "Егерь L3", 1,
+                    resources(new ResourceAmount[]{
+                            new ResourceAmount("Спираль накаливания", 10)
                     })),
 
     };
