@@ -165,6 +165,7 @@ public class ItemsRepositoryStub implements ItemsRepository {
             {"Пропитал", "48839bcc-faf3-4bbe-b0b4-625be67351fa"},
             {"Морфий", "00e82880-064b-484c-9ebe-09befbfa4988"},
             {"REAP-IR тепловизор", "160c7064-3b9d-446d-9d1a-e05bc174e73b"},
+            {"Беспроводной передатчик сигналов COFDM", "8a1bb9dd-f6e3-4890-965f-6910f5bbb5d7"},
 
     };
     private static BidiMap<String, String> itemNameToUid = new DualHashBidiMap<>();

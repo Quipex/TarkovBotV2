@@ -166,7 +166,7 @@ public class BarterRepository extends DealRepository {
                     })),
             new Barter("M-2 Tactical Sword", 1, 1570000, "Лыжник, квест Кремень", 1,
                     resources(new ResourceAmount[]{
-                            new ResourceAmount("Считыватель UHF RFID", 2),
+                            new ResourceAmount("Беспроводной передатчик сигналов COFDM", 2),
                             new ResourceAmount("Ключ от кпп", 1),
                             new ResourceAmount("Цепь с медальоном Prokill", 2),
                             new ResourceAmount("Фазийная решетка РЛС", 2)
