@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 public abstract class TelegramMessage {
     public static final int FIRE_EMOJI_ROUBLES_THRESHOLD = 300000;
-    public static final int FIRE_EMOJI_PERCENTS_THRESHOLD = 50;
+    public static final int FIRE_EMOJI_PERCENTS_THRESHOLD = 40;
     private String title;
     private List<Profit> profits;
     private DecimalFormat priceFormat = new DecimalFormat("#,###");
@@ -24,6 +24,7 @@ public abstract class TelegramMessage {
 
     public String generateMessage() {
         StringBuilder message = new StringBuilder();
+        //noinspection SuspiciousDateFormat
         message.append("#").append(title.toUpperCase()).append(" ").append(LocalDateTime.now()
                 .format(DateTimeFormatter.ofPattern("dd/MM HH:mm:ss"))).append("\n");
         for (Profit profit : profits) {
