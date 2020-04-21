@@ -13,19 +13,27 @@ import java.util.Set;
 public class Main {
 
     public static final int MINUTES_BETWEEN_CYCLES = Integer.parseInt(Configuration.getOSVariable("MINUTES_BETWEEN_CYCLES"));
+    private static Worker worker = new Worker();
 
+    @SuppressWarnings("BusyWait")
     public static void main(String[] args) throws InterruptedException {
         disableLoggers();
-        Worker worker = new Worker();
         //noinspection InfiniteLoopStatement
         while (true) {
-            try {
-                worker.work();
-            } catch (Exception e) {
-                Telegram.sendError(e);
-            }
+            mainCycle();
             log.info("Sleeping for " + MINUTES_BETWEEN_CYCLES + " minutes.");
             Thread.sleep(MINUTES_BETWEEN_CYCLES * 60 * 1000);
+        }
+    }
+
+    private static void mainCycle() throws InterruptedException {
+        try {
+            worker.work();
+        } catch (Exception e) {
+            Telegram.sendError(e);
+            log.info("Retrying after 10 minutes");
+            Thread.sleep(10 * 60 * 1000);
+            mainCycle();
         }
     }
 
