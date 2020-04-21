@@ -60,7 +60,7 @@ public abstract class TelegramMessage {
     }
 
     private String formatProfitPercents(Profit profit) {
-        return bold(String.valueOf(profit.getProfitPercents())) + "%" + (profit.getProfitPercents() > FIRE_EMOJI_PERCENTS_THRESHOLD ? " :fire:" : "");
+        return bold(String.valueOf(profit.getProfitPercents())) + "%" + (profit.getProfitPercents() >= FIRE_EMOJI_PERCENTS_THRESHOLD ? " :fire:" : "");
     }
 
     protected abstract String additionalInfo(Profit profit);
