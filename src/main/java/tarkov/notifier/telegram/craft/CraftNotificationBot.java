@@ -1,11 +1,11 @@
-package tarkov.notifier.telegram;
+package tarkov.notifier.telegram.craft;
 
 import org.telegram.telegrambots.meta.api.objects.Update;
 import tarkov.notifier.Configuration;
 import tarkov.notifier.deal.craft.Craft;
-import tarkov.notifier.deal.profit.CraftMessage;
 import tarkov.notifier.deal.profit.Profit;
-import tarkov.notifier.deal.profit.TelegramMessage;
+import tarkov.notifier.telegram.TelegramMessage;
+import tarkov.notifier.telegram.DealNotificationBot;
 
 import java.util.Comparator;
 import java.util.List;

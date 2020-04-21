@@ -1,8 +1,10 @@
-package tarkov.notifier.deal.profit;
+package tarkov.notifier.telegram.barter;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import tarkov.notifier.deal.barter.Barter;
+import tarkov.notifier.deal.profit.Profit;
+import tarkov.notifier.telegram.TelegramMessage;
 
 import java.util.List;
 

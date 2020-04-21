@@ -3,8 +3,8 @@ package tarkov.notifier.deal.profit;
 import tarkov.notifier.deal.Deal;
 import tarkov.notifier.deal.barter.Barter;
 import tarkov.notifier.deal.craft.Craft;
-import tarkov.notifier.telegram.BarterNotificationBot;
-import tarkov.notifier.telegram.CraftNotificationBot;
+import tarkov.notifier.telegram.barter.BarterNotificationBot;
+import tarkov.notifier.telegram.craft.CraftNotificationBot;
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -44,7 +44,7 @@ public class TelegramDealNotifier {
     }
 
     private Comparator<Profit> expensiveFirst() {
-        return (o1, o2) -> o2.getProfit() - o1.getProfit();
+        return (profit1, profit2) -> profit2.getProfit() - profit1.getProfit();
     }
 
     private Predicate<Profit> equalCategory(String category) {

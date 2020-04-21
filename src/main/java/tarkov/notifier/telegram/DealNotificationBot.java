@@ -5,7 +5,6 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import tarkov.notifier.deal.profit.Profit;
-import tarkov.notifier.deal.profit.TelegramMessage;
 import tarkov.notifier.telegram.storage.TelegramUser;
 import tarkov.notifier.telegram.storage.UsersRepository;
 
@@ -35,6 +34,7 @@ public abstract class DealNotificationBot extends TelegramLongPollingBot {
                 .sorted(sortProfitsComparator())
                 .collect(Collectors.toList());
         TelegramMessage message = generateMessage(category, filteredProfits);
+        int index = 1;
         for (TelegramUser receiver : usersRepository.getReceivers()) {
             sendTextMessage(message, receiver);
         }

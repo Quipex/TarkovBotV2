@@ -1,11 +1,11 @@
-package tarkov.notifier.telegram;
+package tarkov.notifier.telegram.barter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import tarkov.notifier.Configuration;
-import tarkov.notifier.deal.profit.BarterMessage;
 import tarkov.notifier.deal.profit.Profit;
-import tarkov.notifier.deal.profit.TelegramMessage;
+import tarkov.notifier.telegram.TelegramMessage;
+import tarkov.notifier.telegram.DealNotificationBot;
 
 import java.util.List;
 

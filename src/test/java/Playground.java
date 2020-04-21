@@ -1,3 +1,5 @@
+import com.vdurmont.emoji.EmojiManager;
+import com.vdurmont.emoji.EmojiParser;
 import org.junit.Test;
 import tarkov.notifier.Telegram;
 
@@ -17,6 +19,6 @@ public class Playground {
 
     @Test
     public void testTelegram() throws IOException, InterruptedException {
-        Telegram.sendMessage("<i>asdsad</i> <b>asd</b>");
+        Telegram.sendMessage(EmojiParser.parseToUnicode("100% :fire:"));
     }
 }

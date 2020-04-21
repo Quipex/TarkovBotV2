@@ -1,6 +1,8 @@
-package tarkov.notifier.deal.profit;
+package tarkov.notifier.telegram;
 
+import com.vdurmont.emoji.EmojiParser;
 import lombok.Data;
+import tarkov.notifier.deal.profit.Profit;
 
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
@@ -9,6 +11,8 @@ import java.util.List;
 
 @Data
 public abstract class TelegramMessage {
+    public static final int FIRE_EMOJI_ROUBLES_THRESHOLD = 300000;
+    public static final int FIRE_EMOJI_PERCENTS_THRESHOLD = 50;
     private String title;
     private List<Profit> profits;
     private DecimalFormat priceFormat = new DecimalFormat("#,###");
@@ -32,8 +36,7 @@ public abstract class TelegramMessage {
         int resultItemAmount = profit.getDeal().getItemAmount();
         String message = formatHashCode(profit.getDeal().getItemName()) + " x" + resultItemAmount +
                 " [#" + profit.getDeal().category() + "] " + "\n" +
-                "Реальная прибыль " + bold(formatPrice(profit.getProfit())) +
-                " (" + bold(String.valueOf(profit.getProfitPercents())) + "%)";
+                "Реальная прибыль " + formatProfitRoubles(profit) + " (" + formatProfitPercents(profit) + ")";
         if (profit.getTaxes() > 0) {
             message += ", комиссия " + formatPrice(profit.getTaxes());
         }
@@ -49,7 +52,15 @@ public abstract class TelegramMessage {
                 resourceListText.append(resourceAmount.getName()).append(" { цена: ").append(formatPrice(price))
                         .append(", кол-во: ").append(resourceAmount.getAmount()).append(" }\n")));
         message += resourceListText.toString();
-        return message;
+        return EmojiParser.parseToUnicode(message);
+    }
+
+    private String formatProfitRoubles(Profit profit) {
+        return bold(formatPrice(profit.getProfit())) + (profit.getProfit() >= FIRE_EMOJI_ROUBLES_THRESHOLD ? " :fire:" : "");
+    }
+
+    private String formatProfitPercents(Profit profit) {
+        return bold(String.valueOf(profit.getProfitPercents())) + "%" + (profit.getProfitPercents() > FIRE_EMOJI_PERCENTS_THRESHOLD ? " :fire:" : "");
     }
 
     protected abstract String additionalInfo(Profit profit);
